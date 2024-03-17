@@ -2,7 +2,7 @@
   <div class="top-offers bg-grey-lighten-4 pt-9">
     <v-container fluid>
       <v-row>
-        <v-col cols="4" class="py-0 pr-6" style="height: 270px">
+        <v-col cols="4" class="py-0 pr-6" style="height: 350px">
           <v-hover v-slot="{ isHovering, props }">
             <div
               class="parent"
@@ -18,7 +18,7 @@
               /></div
           ></v-hover>
         </v-col>
-        <v-col cols="4" class="py-0 pl-6" style="height: 270px">
+        <v-col cols="4" class="py-0 pl-6" style="height: 350px">
           <v-hover v-slot="{ isHovering, props }">
             <div
               class="parent"
@@ -34,7 +34,7 @@
               /></div
           ></v-hover>
         </v-col>
-        <v-col cols="4" class="py-0 pl-6" style="height: 270px">
+        <v-col cols="4" class="py-0 pl-6" style="height: 350px">
           <v-hover v-slot="{ isHovering, props }">
             <div
               class="parent"

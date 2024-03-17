@@ -28,7 +28,7 @@
 <style>
 .banner {
   .parent {
-    height: 440px;
+    height: 480px;
     background-image: url(@/assets/images/banner-bg.jpg);
     background-size: cover;
     background-position: -40px top;
