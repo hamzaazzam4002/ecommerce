@@ -1,5 +1,16 @@
 <template>
   <div class="flash-deals pt-16">
+    <div class="title mb-10 px-5 d-flex align-center justify-space-between">
+      <h2 style="font-weight: 900; font-size: 30px" class="text-red">
+        Flash Deals
+      </h2>
+      <a
+        href="#"
+        class="text-black"
+        style="text-decoration: none; font-size: 20px"
+        >Shop Now</a
+      >
+    </div>
     <Swiper
       :pagination="{ el: '.swiper-pagination', clickable: true }"
       :modules="modules"
@@ -7,18 +18,28 @@
       :space-between="35"
       :navigation="{ prevIcon: '.swiper-prev', nextIcon: '.swiper-next' }"
       class="pb-9 px-5"
+      :autoplay="{ delay: 3000 }"
     >
       <swiper-slide v-for="item in products" :key="item.id">
         <v-card elevation="0" class="pb-5">
-          <img
-            loading="lazy"
-            :src="
-              showenItem[item.title] ? showenItem[item.title] : item.thumbnail
-            "
-            class="w-100"
-            style="height: 200px"
-            alt=""
-          />
+          <v-hover v-slot="{ isHovering, props }">
+            <div class="img-parent" style="height: 200px; overflow: hidden">
+              <img
+                loading="lazy"
+                :src="
+                  showenItem[item.title]
+                    ? showenItem[item.title]
+                    : item.thumbnail
+                "
+                class="w-100"
+                :style="`height: 100%; transition: 0.5s all ease-in-out; scale: ${
+                  isHovering ? 1.05 : 1
+                }; cursor: pointer`"
+                alt=""
+                v-bind="props"
+              />
+            </div>
+          </v-hover>
           <v-card-text class="pl-0">
             {{ item.title
             }}{{
@@ -52,6 +73,8 @@
               :value="pic"
               :key="i"
               size="x-small"
+              rounded="xl"
+              :ripple="false"
               ><img
                 :src="pic"
                 width="30"
@@ -79,7 +102,7 @@
 </template>
 <script>
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation, Autoplay } from "swiper";
 export default {
   props: {
     products: {
@@ -88,7 +111,7 @@ export default {
   },
   setup() {
     return {
-      modules: [Pagination, Navigation],
+      modules: [Pagination, Navigation, Autoplay],
     };
   },
   components: {
@@ -120,7 +143,8 @@ export default {
     }
   }
   .swiper-pagination-bullet {
-    width: 20px;
+    width: 12px;
+    height: 12px;
   }
 }
 </style>
